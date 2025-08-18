@@ -5,10 +5,12 @@ warnings.filterwarnings('ignore')
 from crewai import Agent, Task, Crew
 import os
 from utils import get_openai_api_key
+from dotenv import load_dotenv
 
 openai_api_key = get_openai_api_key()
 os.environ["OPENAI_MODEL_NAME"] = 'gpt-4o-mini'
-os.environ["SERPER_API_KEY"] = get_serper_api_key() # TODO: Add serper api key
+# SERPER_API_KEY should be loaded from .env file
+load_dotenv()  # This will load the SERPER_API_KEY from .env
 
 sales_rep_agent = Agent(
     role="Sales Representative",
